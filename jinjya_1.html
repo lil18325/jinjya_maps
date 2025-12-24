@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+    <title>八幡八雲神社の詳細</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./detail.css">
+    
+    <script>
+        // マーカーのコンテンツを作成する関数 (詳細ページ用)
+        const createMarkerContent = (src, title) => {
+            const content = document.createElement("div");
+            content.className = "shrine-marker";
+            content.innerHTML = 
+                `<div class="pin-icon">
+                    <img src="./${src}" alt="${title}アイコン" class="pin-image">
+                </div>` + 
+                `<div class="shrine-name">${title}</div>`; 
+            return content;
+        };
+        
+        // 地図を初期化する関数
+        async function initDetailMap() {
+            // marker ライブラリをインポート
+            const { Map } = await google.maps.importLibrary("maps");
+            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+            
+            // 八幡八雲神社の座標とタイトル
+            const position = { lat: 35.6626, lng: 139.3350 };
+            const shrineTitle = '八幡八雲神社';
+
+            if (typeof Map === 'undefined' || typeof AdvancedMarkerElement === 'undefined') {
+                console.error("Google Maps libraries failed to load.");
+                return;
+            }
+
+            const map = new Map(
+                document.getElementById('shrine-map'),
+                {
+                    zoom: 16, 
+                    center: position,
+                    mapId: "7d4a5985732b944d765aae7a", // メイン地図アプリと同じスタイルID
+                    
+                    // 地図の操作を固定
+                    disableDefaultUI: true, 
+                    gestureHandling: 'none', 
+                }
+            );
+
+            // AdvancedMarkerElement とカスタムコンテンツ（鳥居アイコン）を使用
+            new AdvancedMarkerElement({
+                position: position,
+                map: map,
+                title: shrineTitle,
+                content: createMarkerContent('Jinjya_mark.png', shrineTitle), // 鳥居アイコン
+            });
+        }
+    </script>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>八幡八雲神社</h1>
+        <p>はちまんやくもじんじゃ</p>
+        
+        <img src="八幡八雲神社googlemapより.jpg" alt="八幡八雲神社の本殿">
+
+        <div class="info-section">
+            <h2>御祭神</h2>
+            <p>誉田別尊（ほんだわけのみこと）</p>
+            <p>素盞嗚尊（すさのおのみこと）</p>
+        </div>
+
+        <div class="info-section">
+            <h2>系列・本社</h2>
+            <p>八幡社・八雲神社</p>
+            <p>宇佐神宮(大分)・八坂神社（京都）</p>
+        </div>
+
+        <div class="info-section">
+            <h2>御由緒</h2>
+            <p>八幡神社は延長二年（924年）小野隆泰武蔵の国司の時石清水八幡宮を勧請。八雲神社は大伴妙行が延喜十六年（916年）深沢山に奉斎後、慶長三年（1598年）八幡神社に奉遷して世に両社と尊崇され、長く当地の氏神となりました。</p>
+        </div>
+
+        <div class="two-column">
+            
+            <div class="info-column">
+                
+                <div class="info-section detail-item">
+                    <h2 class="item-label">例祭</h2>
+                    <div class="item-content">
+                        <p>7月23日直後の日曜　八雲神社例大祭</p>
+                        <p>9月15日直後の日曜　八幡神社例大祭</p>
+                        <p>8月第一金・土・日　八王子まつり</p>
+                    </div>
+                </div>
+
+                <div class="info-section detail-item">
+                    <h2 class="item-label">所在地</h2>
+                    <div class="item-content">
+                        <p>〒192-0063 東京都八王子市元横山町2丁目15-27</p>
+                    </div>
+                </div>
+
+                <div class="info-section detail-item">
+                    <h2 class="item-label">連絡先</h2>
+                    <div class="item-content">
+                        <p>TEL: 042-623-0720</p>
+                        <p>FAX: 042-623-3391</p>
+                    </div>
+                </div>
+                
+                <div class="info-section detail-item">
+                    <h2 class="item-label">アクセス</h2>
+                    <div class="item-content">
+                        <p>JR「八王子駅」北口　徒歩10分</p>
+                        <p>JR「八王子駅」北口よりバス「横山町三丁目」下車　徒歩2分</p>
+                    </div>
+                </div>
+
+                <div class="info-section detail-item official-site">
+                    <h2 class="item-label">公式サイト</h2>
+                    <div class="item-content">
+                        <p><a href="http://www.hachiman-yakumo.or.jp/" target="_blank" rel="noopener noreferrer">http://www.hachiman-yakumo.or.jp/</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-column">
+                <h2>地図</h2>
+                <div id="shrine-map"></div>
+                
+                <a href="./index.html" class="back-link map-column-link">地図に戻る</a>
+            </div>
+        </div>
+    </div> <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initDetailMap&v=weekly&map_ids=7d4a5985732b944d765aae7a"
+        defer
+    ></script>
+</body>
+</html>
