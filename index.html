@@ -2,9 +2,7 @@
 <html>
   <head>
     <title>Shrine Map</title>
-    
     <meta charset="UTF-8">
-    
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <script type="module" src="./index.js"></script>
   </head>
@@ -14,13 +12,11 @@
 
     <div id="top-bar-controls">
         <button id="area-search-trigger">エリアで検索</button> 
-
-        </div>
+    </div>
     
     <div id="region-selection-overlay" style="display: none;">
         <h2 id="selection-title">エリアを選択</h2>
-        <div id="selection-buttons-container">
-            </div>
+        <div id="selection-buttons-container"></div>
         <button id="back-button" class="action-button" style="display:none;">一つ前に戻る</button>
     </div>
 
@@ -30,7 +26,8 @@
     </div>
 
     <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOtsB3kAl7qHWRso1Jlp5-_FF2SZgmnBQ&loading=async&callback=initMap&v=weekly&map_ids=7198dffbcc95141941689647"
-    defer
-  ></script>  </body>
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOtsB3kAl7qHWRso1Jlp5-_FF2SZgmnBQ&loading=async&callback=initMap&v=weekly&map_ids=7198dffbcc95141941689647"
+      defer
+    ></script>
+</body>
 </html>
