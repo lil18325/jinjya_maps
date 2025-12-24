@@ -214,7 +214,6 @@ const mapStyles = [
         zoom: initialZoom, 
         center: initialCenter,
         mapId: "7198dffbcc95141941689647",
-        styles: mapStyles,
     });
   
     shrines.forEach(shrine => {
